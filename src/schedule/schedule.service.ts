@@ -63,7 +63,6 @@ export class ScheduleService {
     });
   }
 
-
   async findAll(): Promise<Schedule[]> {
     return await this.scheduleRepository.find({ relations: ['user', 'service'] });
   }

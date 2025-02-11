@@ -7,6 +7,11 @@ import { CreateServiceDto } from './dto/create-service.dto';
 export class ServiceController {
   constructor(private readonly serviceService: ServiceService) { }
 
+  @Post()
+  create(@Body() service: Partial<Service>) {
+    return this.serviceService.create(service);
+  }
+
   @Get()
   findAll() {
     return this.serviceService.findAll();
@@ -15,11 +20,6 @@ export class ServiceController {
   @Get(':id')
   findOne(@Param('id') id: number) {
     return this.serviceService.findOne(id);
-  }
-
-  @Post()
-  create(@Body(new ValidationPipe()) createServiceDto: CreateServiceDto) {
-    return this.serviceService.create(createServiceDto);
   }
 
   @Put(':id')

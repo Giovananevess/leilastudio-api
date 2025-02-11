@@ -6,6 +6,7 @@ import { ScheduleModule } from './schedule/schedule.module';
 import { Schedule } from './schedule/entities/schedule.entity';
 import { User } from './user/entities/user.entity';
 import { Service } from './service/entities/service.entity';
+import { ServiceModule } from './service/service.module';
 
 @Module({
   imports: [
@@ -19,8 +20,9 @@ import { Service } from './service/entities/service.entity';
       autoLoadEntities: true,
       synchronize: true,
     }),
-    TypeOrmModule.forFeature([Schedule, User, Service]), // ADICIONADO
+    TypeOrmModule.forFeature([Schedule, User, Service]),
     ScheduleModule,
+    ServiceModule,
   ],
   controllers: [AppController],
   providers: [AppService],
