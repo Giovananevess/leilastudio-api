@@ -7,6 +7,11 @@ import { CreateUserDto } from './dto/create-user.dto';
 export class UserController {
   constructor(private readonly userService: UserService) { }
 
+  @Post('register')
+  async register(@Body() user: { email: string; password: string }) {
+    return this.userService.create(user);
+  }
+
   @Get()
   findAll() {
     return this.userService.findAll();
@@ -14,7 +19,7 @@ export class UserController {
 
   @Get(':id')
   findOne(@Param('id') id: number) {
-    return this.userService.findOne(id);
+    return this.userService.findOneById(id);
   }
 
   @Post()

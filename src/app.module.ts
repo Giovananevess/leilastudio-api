@@ -1,12 +1,12 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { UserModule } from './user/user.module';
 import { ScheduleModule } from './schedule/schedule.module';
-import { Schedule } from './schedule/entities/schedule.entity';
-import { User } from './user/entities/user.entity';
+import { AuthModule } from './auth/auth.module';
 import { Service } from './service/entities/service.entity';
-import { ServiceModule } from './service/service.module';
+import { User } from './user/entities/user.entity';
+import { Schedule } from './schedule/entities/schedule.entity';
+import { AppointmentHistory } from './appointments-history/entities/appointments-history.entity';
 
 @Module({
   imports: [
@@ -20,11 +20,9 @@ import { ServiceModule } from './service/service.module';
       autoLoadEntities: true,
       synchronize: true,
     }),
-    TypeOrmModule.forFeature([Schedule, User, Service]),
-    ScheduleModule,
-    ServiceModule,
+    TypeOrmModule.forFeature([User, Schedule, Service, AppointmentHistory]),
+    UserModule,
+    AuthModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
 })
 export class AppModule { }
