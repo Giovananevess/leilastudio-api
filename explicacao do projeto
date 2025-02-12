@@ -1,0 +1,36 @@
+Backend (NestJS + TypeORM + MySQL)
+Tecnologias Utilizadas
+Framework: NestJS
+Banco de Dados: MySQL
+ORM: TypeORM
+Autenticação: JWT (JSON Web Token), Passport.js
+Gerenciamento de dependências: npm
+Como rodar o backend
+Pré-requisitos
+Node.js instalado
+MySQL rodando
+Passos para rodar o backend
+bash
+Copy
+Edit
+# Clone o repositório
+git clone https://github.com/seu-repositorio.git
+
+# Entre na pasta do backend
+cd leilastudio-api
+
+# Instale as dependências
+npm install
+
+# Configure o banco de dados no .env
+cp .env.example .env
+
+# Rode as migrations (se aplicável)
+npm run migration:run
+
+# Inicie o servidor
+npm run start
+Observações
+O backend fornece endpoints RESTful para o frontend consumir.
+A autenticação é baseada em JWT.
+O banco de dados precisa estar rodando antes de iniciar o backend.
